@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu Ứng Đèn Kéo Quân 3D</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #0b0c10;
+            color: #c5c6c7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        header { text-align: center; margin-top: 10px; }
+        h1 { font-size: 1.8rem; color: #66fcf1; margin-bottom: 5px; }
+        .student-code { font-size: 1.1rem; color: #ff007f; font-weight: bold; }
+        .instruction { font-size: 0.85rem; color: #aaa; margin-top: 5px; }
+
+        .stage {
+            width: 220px;
+            height: 280px;
+            perspective: 1200px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        .face {
+            position: absolute;
+            width: 200px;
+            height: 260px;
+            left: 10px;
+            top: 10px;
+            border: 3px solid #66fcf1;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #1f2833;
+            box-shadow: 0 0 20px rgba(102, 252, 241, 0.3);
+        }
+        .face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* 6 mặt đèn cách tâm 240px */
+        .face:nth-child(1) { transform: rotateY(0deg) translateZ(240px); }
+        .face:nth-child(2) { transform: rotateY(60deg) translateZ(240px); }
+        .face:nth-child(3) { transform: rotateY(120deg) translateZ(240px); }
+        .face:nth-child(4) { transform: rotateY(180deg) translateZ(240px); }
+        .face:nth-child(5) { transform: rotateY(240deg) translateZ(240px); }
+        .face:nth-child(6) { transform: rotateY(300deg) translateZ(240px); }
+
+        .controls {
+            background: rgba(31, 40, 51, 0.9);
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .btn-ctrl {
+            padding: 8px 15px;
+            background: #66fcf1;
+            color: #0b0c10;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-ctrl:hover { background: #45a29e; }
+        .back-link { color: #66fcf1; text-decoration: none; margin-bottom: 10px; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ĐÈN KÉO QUÂN 3D</h1>
+        <div class="student-code">Mã SV: [241A010083]</div>
+        <div class="instruction">💡 Đưa chuột vào đèn để DỪNG XOAY, rê chuột ra để QUAY TIẾP</div>
+    </header>
+
+    <div class="stage" id="stage">
+        <div class="carousel" id="carousel">
+            <div class="face"><img src="images/images1.JPG" alt="Ảnh 1"></div>
+            <div class="face"><img src="images/images2.JPG" alt="Ảnh 2"></div>
+            <div class="face"><img src="images/images3.JPG" alt="Ảnh 3"></div>
+            <div class="face"><img src="images/images4.JPG" alt="Ảnh 4"></div>
+            <div class="face"><img src="images/images5.JPG" alt="Ảnh 5"></div>
+            <div class="face"><img src="images/images5.JPG" alt="Ảnh 6"></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn-ctrl" id="pauseBtn">Tạm dừng</button>
+    </div>
+
+    <a href="./index.html" class="back-link">← Quay lại Trang Chủ</a>
+
+    <script>
+        const carousel = document.getElementById('carousel');
+        const stage = document.getElementById('stage');
+        const pauseBtn = document.getElementById('pauseBtn');
+
+        let angle = 0;
+        let speed = 0.5;
+        let isPaused = false;
+
+        function rotateCarousel() {
+            if (!isPaused) {
+                angle += speed;
+            }
+            carousel.style.transform = `rotateY(${angle}deg)`;
+            requestAnimationFrame(rotateCarousel);
+        }
+        requestAnimationFrame(rotateCarousel);
+
+        stage.addEventListener('mouseenter', () => { isPaused = true; });
+        stage.addEventListener('mouseleave', () => { isPaused = false; });
+
+        pauseBtn.addEventListener('click', () => {
+            isPaused = !isPaused;
+            pauseBtn.textContent = isPaused ? "Tiếp tục" : "Tạm dừng";
+        });
+    </script>
+</body>
+</html>

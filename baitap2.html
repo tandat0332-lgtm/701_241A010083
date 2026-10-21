@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form đăng ký</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>FORM ĐĂNG KÝ NGƯỜI DÙNG</h1>
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="ly-thuyet.html">Lý thuyết</a>
+        <a href="baitap01.html">Bài 1</a>
+        <a href="baitap03.html">Bài 3</a>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="card">
+        <h2>Đăng ký tài khoản</h2>
+
+        <form id="registerForm">
+            <label for="name">Họ và tên:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" required>
+            <small>
+                Ít nhất 8 ký tự, có chữ hoa, chữ thường và số.
+            </small>
+
+            <div class="check-row">
+                <input type="checkbox" id="terms">
+                <label for="terms">Tôi đồng ý với điều khoản.</label>
+            </div>
+
+            <button type="submit">Đăng ký</button>
+            <p id="formMessage" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>Giải thích cách hoạt động</h2>
+        <p>
+            JavaScript kiểm tra họ tên, email, mật khẩu và điều khoản
+            khi người dùng gửi form. Nếu dữ liệu hợp lệ, chương trình
+            lưu tên và email vào LocalStorage rồi hiển thị thông báo.
+        </p>
+        <p>
+            Đây là bài thực hành minh họa. Không lưu mật khẩu vào
+            LocalStorage vì dữ liệu này có thể bị JavaScript trên cùng
+            website truy cập. Website thực tế cần xác thực phía server
+            và truyền dữ liệu qua HTTPS.
+        </p>
+    </section>
+</main>
+
+<footer><p>Nguyễn Tấn Đạt - 241A010083</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>

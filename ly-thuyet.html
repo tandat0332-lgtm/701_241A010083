@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trả lời lý thuyết</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>PHẦN 1: LÝ THUYẾT</h1>
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="baitap01.html">Bài 1</a>
+        <a href="baitap02.html">Bài 2</a>
+        <a href="baitap03.html">Bài 3</a>
+        <a href="diem-danh.html">Điểm danh</a>
+    </nav>
+</header>
+
+<main class="container">
+<section class="card">
+<h2>Câu 1. Phân biệt position: relative và absolute</h2>
+<p>
+Position trong CSS dùng để xác định vị trí hiển thị của phần tử.
+Hai giá trị relative và absolute có cách hoạt động khác nhau.
+</p>
+<p>
+<strong>Position: relative:</strong> Phần tử vẫn giữ vị trí trong luồng
+bố cục bình thường. Có thể dịch chuyển nó bằng top, right, bottom hoặc left.
+Khoảng trống ban đầu của phần tử vẫn được giữ lại.
+</p>
+<pre><code>
+.box {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+</code></pre>
+<p>
+Ví dụ: dịch chuyển nhẹ một biểu tượng hoặc tạo phần tử cha làm mốc
+định vị cho các phần tử con.
+</p>
+<p>
+<strong>Position: absolute:</strong> Phần tử được đưa ra khỏi luồng bố cục
+bình thường và định vị theo tổ tiên gần nhất có position khác static.
+</p>
+<pre><code>
+.product {
+    position: relative;
+}
+
+.sale {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+</code></pre>
+<p>
+Ví dụ: đặt nhãn giảm giá ở góc ảnh sản phẩm. Khi thiết kế responsive,
+nên kết hợp Flexbox, Grid, đơn vị linh hoạt và media query để trang
+hiển thị tốt trên điện thoại và máy tính. Hosting không làm thay đổi
+ý nghĩa của hai thuộc tính CSS này.
+</p>
+</section>
+
+<section class="card">
+<h2>Câu 2. Domain, Hosting và DNS</h2>
+<p>
+Domain là tên miền của website, ví dụ example.com. Hosting là nơi lưu
+trữ các tệp HTML, CSS, JavaScript và những tài nguyên của website.
+</p>
+<p>Quy trình triển khai website gồm:</p>
+<ol>
+    <li>Chọn và đăng ký tên miền tại nhà đăng ký.</li>
+    <li>Chọn dịch vụ hosting phù hợp.</li>
+    <li>Tải mã nguồn lên hosting hoặc kết nối với GitHub.</li>
+    <li>Cấu hình DNS để tên miền trỏ đến dịch vụ hosting.</li>
+    <li>Bật HTTPS và kiểm tra website trên nhiều thiết bị.</li>
+</ol>
+<p>
+DNS có nhiệm vụ phân giải tên miền thành thông tin địa chỉ giúp trình
+duyệt tìm đến máy chủ phù hợp.
+</p>
+<p>
+Hai công cụ triển khai website tĩnh phổ biến là GitHub Pages và Netlify.
+GitHub Pages có thể xuất bản website từ repository GitHub. Netlify hỗ trợ
+triển khai website tĩnh từ repository hoặc thư mục mã nguồn.
+</p>
+<p>
+Rủi ro bảo mật gồm cấu hình DNS sai, không sử dụng HTTPS, để lộ API key
+trong JavaScript và sử dụng thư viện có lỗ hổng. Không nên lưu mật khẩu
+hoặc khóa bí mật trong mã nguồn phía trình duyệt.
+</p>
+</section>
+
+<section class="card">
+<h2>Câu 3. So sánh var, let và const</h2>
+<p>
+Var có phạm vi hàm và được hoisting với giá trị ban đầu là undefined.
+Let và const có phạm vi khối lệnh; nếu truy cập trước dòng khai báo,
+chương trình sẽ phát sinh ReferenceError do Temporal Dead Zone.
+</p>
+<p>
+Let cho phép gán lại giá trị. Const không cho phép gán lại biến và phải
+được khởi tạo khi khai báo, nhưng nội dung bên trong object hoặc array
+được khai báo bằng const vẫn có thể thay đổi.
+</p>
+<pre><code>
+console.log(a);
+var a = 10; // In ra undefined
+
+// console.log(b);
+// let b = 20; // ReferenceError nếu bỏ chú thích dòng trên
+
+let age = 18;
+age = 19; // Hợp lệ
+
+const student = { name: "Dat" };
+student.name = "An"; // Hợp lệ
+</code></pre>
+<p>
+Một lỗi thường gặp khi dùng var trong vòng lặp là các hàm callback có
+thể cùng tham chiếu một biến. Dùng let giúp mỗi vòng lặp có biến riêng.
+</p>
+<pre><code>
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 0);
+}
+// Kết quả: 3, 3, 3
+
+for (let j = 0; j < 3; j++) {
+    setTimeout(() => console.log(j), 0);
+}
+// Kết quả: 0, 1, 2
+</code></pre>
+<p>
+Có thể debug bằng Chrome DevTools: mở Console để xem lỗi, vào Sources
+đặt breakpoint, chạy từng bước và quan sát giá trị biến. Nên ưu tiên
+const, dùng let khi cần gán lại và hạn chế var.
+</p>
+</section>
+
+<section class="card">
+<h2>Câu 4. Event Delegation</h2>
+<p>
+Event Delegation là kỹ thuật gắn một trình xử lý sự kiện lên phần tử cha
+thay vì gắn riêng lên từng phần tử con. Kỹ thuật này dựa vào cơ chế
+nổi bọt sự kiện (event bubbling).
+</p>
+<pre><code>
+document.querySelector("#list").addEventListener("click", function(event) {
+    const button = event.target.closest("button");
+
+    if (!button || !this.contains(button)) {
+        return;
+    }
+
+    alert("Bạn đã chọn: " + button.textContent);
+});
+</code></pre>
+<p>
+Ví dụ: một danh sách sản phẩm có thể được thêm phần tử mới bằng
+JavaScript mà không cần gắn lại sự kiện cho từng nút. Cách làm này
+giúp giảm số lượng listener và dễ bảo trì. HTML tạo cấu trúc, CSS
+tạo giao diện và trạng thái tương tác, còn JavaScript xử lý sự kiện.
+</p>
+</section>
+
+<p><a class="button" href="index.html">Quay về trang chủ</a></p>
+</main>
+
+<footer><p>Nguyễn Tấn Đạt - 241A010083</p></footer>
+</body>
+</html>

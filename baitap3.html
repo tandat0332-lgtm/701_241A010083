@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồng hồ đếm ngược</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>ĐỒNG HỒ ĐẾM NGƯỢC</h1>
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="ly-thuyet.html">Lý thuyết</a>
+        <a href="baitap01.html">Bài 1</a>
+        <a href="baitap02.html">Bài 2</a>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="card timer-card">
+        <h2>Thời gian còn lại</h2>
+
+        <div id="timer" class="timer">10:00</div>
+
+        <button id="startTimer">Bắt đầu</button>
+        <button id="pauseTimer" class="secondary">Tạm dừng</button>
+        <button id="resetTimer" class="secondary">Đặt lại</button>
+
+        <p id="timerMessage" aria-live="polite">
+            Nhấn Bắt đầu để chạy đồng hồ.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Giải thích cách hoạt động</h2>
+        <p>
+            Đồng hồ bắt đầu từ 600 giây, tương đương 10 phút.
+            Hàm setInterval cập nhật thời gian mỗi giây và hiển thị
+            theo định dạng MM:SS.
+        </p>
+        <p>
+            Khi thời gian còn dưới 60 giây, CSS thêm hiệu ứng nhấp nháy.
+            Khi hết giờ, chương trình gọi clearInterval() để dừng bộ đếm
+            và hiển thị thông báo. Các nút tạm dừng, đặt lại cũng dừng
+            interval cũ để tránh chạy nhiều bộ đếm cùng lúc.
+        </p>
+        <p>
+            Nếu triển khai hệ thống thi trực tuyến thật, nên dùng thời
+            điểm kết thúc từ server thay vì tin hoàn toàn vào đồng hồ
+            của trình duyệt.
+        </p>
+    </section>
+</main>
+
+<footer><p>Nguyễn Tấn Đạt - 241A010083</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>

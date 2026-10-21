@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Thực Hành 1 - Tìm Kiếm Sản Phẩm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>BÀI 1: QUẢN LÝ & TÌM KIẾM SẢN PHẨM</h1>
+        <p class="student-info">Mã SV: [MÃ SV CỦA BẠN]</p>
+        <nav class="main-nav">
+            <a href="index.html">Trang Chủ</a>
+            <a href="ly-thuyet.html">a) Trả Lời Lý Thuyết</a>
+            <a href="baitap23.html">b) Bài Tập 23</a>
+            <a href="baitap22.html">c) Kết Quả Bài 22</a>
+            <a href="diem-danh.html">d) Điểm Danh</a>
+            <a href="baitap01.html" class="active">Bài 1</a>
+            <a href="baitap02.html">Bài 2</a>
+            <a href="baitap03.html">Bài 3</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Danh Sách Sản Phẩm</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Nhập tên sản phẩm cần tìm...">
+            </div>
+            <p id="notFoundMessage" class="error-msg" style="display: none;">❌ Không tìm thấy sản phẩm phù hợp!</p>
+            <div id="productGrid" class="product-grid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Đề Thi Lập Trình Web</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
